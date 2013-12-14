@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="NCQViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sZL-o9-Qtt"/>
+                        <viewControllerLayoutGuide type="bottom" id="vkE-gE-lWf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fryinstein" translatesAutoresizingMaskIntoConstraints="NO" id="emY-Kj-ohT">
+                                <rect key="frame" x="160" y="427" width="140" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="1qs-bk-H7n"/>
+                                    <constraint firstAttribute="width" constant="140" id="EFW-aP-4Ey"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uGS-OV-XD4">
+                                <rect key="frame" x="236" y="35" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Vmn-dW-oNa"/>
+                                    <constraint firstAttribute="height" constant="64" id="zBF-RP-TUj"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lWk-Rk-AUC">
+                                <rect key="frame" x="236" y="107" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Asb-SC-4Wl"/>
+                                    <constraint firstAttribute="height" constant="64" id="Ysz-Dw-4PY"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iQD-90-mQj">
+                                <rect key="frame" x="236" y="252" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Dih-YE-7YV"/>
+                                    <constraint firstAttribute="height" constant="64" id="Gxu-zx-x6u"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On A Palookaville Net?" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="208" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-Fp-Mwa">
+                                <rect key="frame" x="20" y="35" width="208" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="MHK-HR-NJw"/>
+                                    <constraint firstAttribute="width" constant="208" id="Oov-Hw-l3O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can see the AMBUR host?" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="208" translatesAutoresizingMaskIntoConstraints="NO" id="kHH-4R-gLR">
+                                <rect key="frame" x="20" y="107" width="208" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="nUX-0c-kQh"/>
+                                    <constraint firstAttribute="width" constant="208" id="un3-3b-3UL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can contact Mercury?" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="208" translatesAutoresizingMaskIntoConstraints="NO" id="YLH-EN-v3b">
+                                <rect key="frame" x="20" y="252" width="208" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="lQu-TJ-zDw"/>
+                                    <constraint firstAttribute="height" constant="64" id="s3F-HP-K65"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oJa-wE-pj6">
+                                <rect key="frame" x="236" y="179" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="8Qq-4A-p3R"/>
+                                    <constraint firstAttribute="width" constant="64" id="eIf-As-dX8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can see Comcast?" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="208" translatesAutoresizingMaskIntoConstraints="NO" id="ooW-hX-M0r">
+                                <rect key="frame" x="20" y="179" width="208" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="QuP-aF-pie"/>
+                                    <constraint firstAttribute="height" constant="64" id="kzB-LX-3ca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzD-pJ-cpf">
+                                <rect key="frame" x="20" y="518" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.84146615741976472" green="0.91139454605031467" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6s7-Ha-ZAE"/>
+                                    <constraint firstAttribute="width" constant="88" id="bBD-2P-jOn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="RE-CHECK">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkStatuses:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2yw-Iw-D9H"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iQD-90-mQj" firstAttribute="top" secondItem="oJa-wE-pj6" secondAttribute="bottom" constant="9" id="055-he-bC0"/>
+                            <constraint firstItem="oJa-wE-pj6" firstAttribute="top" secondItem="lWk-Rk-AUC" secondAttribute="bottom" constant="8" id="22C-8T-igu"/>
+                            <constraint firstItem="wdX-Fp-Mwa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="AYs-FU-YuA"/>
+                            <constraint firstItem="wdX-Fp-Mwa" firstAttribute="top" secondItem="sZL-o9-Qtt" secondAttribute="bottom" constant="15" id="C2e-Il-xqf"/>
+                            <constraint firstItem="YLH-EN-v3b" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="E3L-O6-v6o"/>
+                            <constraint firstAttribute="trailing" secondItem="emY-Kj-ohT" secondAttribute="trailing" constant="20" id="KCL-cw-YFp"/>
+                            <constraint firstItem="iQD-90-mQj" firstAttribute="leading" secondItem="YLH-EN-v3b" secondAttribute="trailing" constant="8" id="NQS-o3-EJv"/>
+                            <constraint firstItem="YLH-EN-v3b" firstAttribute="top" secondItem="ooW-hX-M0r" secondAttribute="bottom" constant="9" id="Rtb-6A-dFB"/>
+                            <constraint firstItem="ooW-hX-M0r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="TNA-AZ-5cP"/>
+                            <constraint firstItem="oJa-wE-pj6" firstAttribute="leading" secondItem="ooW-hX-M0r" secondAttribute="trailing" constant="8" id="Ved-DJ-1Uh"/>
+                            <constraint firstItem="kHH-4R-gLR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Zmr-8Y-OZc"/>
+                            <constraint firstItem="ooW-hX-M0r" firstAttribute="top" secondItem="kHH-4R-gLR" secondAttribute="bottom" constant="8" id="Zyi-7L-0MM"/>
+                            <constraint firstItem="HzD-pJ-cpf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="byX-6b-Kzd"/>
+                            <constraint firstAttribute="trailing" secondItem="iQD-90-mQj" secondAttribute="trailing" constant="20" id="eyD-zj-O6V"/>
+                            <constraint firstItem="uGS-OV-XD4" firstAttribute="leading" secondItem="wdX-Fp-Mwa" secondAttribute="trailing" constant="8" id="j2B-t2-sqX"/>
+                            <constraint firstAttribute="trailing" secondItem="uGS-OV-XD4" secondAttribute="trailing" constant="20" id="kUe-3S-XQ8"/>
+                            <constraint firstItem="lWk-Rk-AUC" firstAttribute="leading" secondItem="kHH-4R-gLR" secondAttribute="trailing" constant="8" id="lYI-K8-56m"/>
+                            <constraint firstAttribute="trailing" secondItem="lWk-Rk-AUC" secondAttribute="trailing" constant="20" id="pcZ-Mm-328"/>
+                            <constraint firstItem="uGS-OV-XD4" firstAttribute="top" secondItem="sZL-o9-Qtt" secondAttribute="bottom" constant="15" id="r8y-Dn-DKI"/>
+                            <constraint firstItem="lWk-Rk-AUC" firstAttribute="top" secondItem="uGS-OV-XD4" secondAttribute="bottom" constant="8" id="sS5-vc-Q9R"/>
+                            <constraint firstItem="vkE-gE-lWf" firstAttribute="top" secondItem="HzD-pJ-cpf" secondAttribute="bottom" constant="20" id="smW-kQ-x0v"/>
+                            <constraint firstItem="vkE-gE-lWf" firstAttribute="top" secondItem="emY-Kj-ohT" secondAttribute="bottom" constant="20" id="xaM-GY-L7v"/>
+                            <constraint firstAttribute="trailing" secondItem="oJa-wE-pj6" secondAttribute="trailing" constant="20" id="yDd-uZ-ynZ"/>
+                            <constraint firstItem="kHH-4R-gLR" firstAttribute="top" secondItem="wdX-Fp-Mwa" secondAttribute="bottom" constant="8" id="ylc-yc-KMH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="canSeeModemImage" destination="oJa-wE-pj6" id="zHy-ie-9FE"/>
+                        <outlet property="canSeeModemLabel" destination="ooW-hX-M0r" id="SOu-Aa-Mgb"/>
+                        <outlet property="correctLanImage" destination="uGS-OV-XD4" id="Tk2-dP-QzZ"/>
+                        <outlet property="correctLanLabel" destination="wdX-Fp-Mwa" id="eMZ-Zq-PV5"/>
+                        <outlet property="seeAmburHubImage" destination="lWk-Rk-AUC" id="0eY-ah-UZj"/>
+                        <outlet property="seeAmburHubLabel" destination="kHH-4R-gLR" id="xXb-s0-vGK"/>
+                        <outlet property="seeInternetImage" destination="iQD-90-mQj" id="6Yt-Hx-ulo"/>
+                        <outlet property="seeInternetLabel" destination="YLH-EN-v3b" id="rFf-CG-56I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85" y="110"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="fryinstein" width="280" height="241"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
