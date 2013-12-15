@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Local Network</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>Pallookaville</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>networkPrefix</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Network Prefix</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Payment Processor</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>http://www.mercurypay.com/</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>paymentTestUrl</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Payment Test URL</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>MercuryPay.Com</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>paymentDescription</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Description</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>testForAMBUR</string>
+			<key>Title</key>
+			<string>Test AMBUR</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<!--
+		<dict>
+			<key>DefaultValue</key>
+			<real>0.5</real>
+			<key>Key</key>
+			<string>slider_preference</string>
+			<key>MaximumValue</key>
+			<integer>1</integer>
+			<key>MaximumValueImage</key>
+			<string></string>
+			<key>MinimumValue</key>
+			<integer>0</integer>
+			<key>MinimumValueImage</key>
+			<string></string>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+		</dict> 
+ -->
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	[self loadPreferences];
     return YES;
 }
 							
@@ -41,6 +42,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void) loadPreferences {
+	NSString *path = [[NSBundle mainBundle] bundlePath];
+	NSString *pListPath = [path stringByAppendingPathComponent:@"Settings.bundle/Root.plist"];
+	NSDictionary *pList = [NSDictionary dictionaryWithContentsOfFile:pListPath];
+	NSMutableArray *prefsArray = [pList objectForKey:@"PreferenceSpecifiers"];
+	NSMutableDictionary *regDictionary = [NSMutableDictionary dictionary];
+	for (NSDictionary *dict in prefsArray) {
+		NSString *key = [dict objectForKey:@"Key"];
+		if(key) {
+			id value = [dict objectForKey:@"DefaultValue"];
+			NSLog(@" %@ -> %@", key, value);
+			[regDictionary setObject:value forKey:key];
+		}
+	}
+	[[NSUserDefaults standardUserDefaults] registerDefaults:regDictionary];
 }
 
 @end

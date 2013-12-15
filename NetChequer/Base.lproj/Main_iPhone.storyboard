@@ -118,6 +118,20 @@
                                     <action selector="checkStatuses:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2yw-Iw-D9H"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-zu-yQN">
+                                <rect key="frame" x="20" y="472" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Z6c-Xa-U3U"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Internal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1F-VK-wVf">
+                                <rect key="frame" x="77" y="477" width="75" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -150,6 +164,7 @@
                     <connections>
                         <outlet property="canSeeModemImage" destination="oJa-wE-pj6" id="zHy-ie-9FE"/>
                         <outlet property="canSeeModemLabel" destination="ooW-hX-M0r" id="SOu-Aa-Mgb"/>
+                        <outlet property="comcastSwitchLabel" destination="G1F-VK-wVf" id="wIe-LX-qTt"/>
                         <outlet property="correctLanImage" destination="uGS-OV-XD4" id="Tk2-dP-QzZ"/>
                         <outlet property="correctLanLabel" destination="wdX-Fp-Mwa" id="eMZ-Zq-PV5"/>
                         <outlet property="seeAmburHubImage" destination="lWk-Rk-AUC" id="0eY-ah-UZj"/>

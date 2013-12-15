@@ -33,6 +33,7 @@
 		0E2F51E81855209F000E8E31 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51DE1855209F000E8E31 /* AFXMLRequestOperation.m */; };
 		0E2F51E91855209F000E8E31 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51E01855209F000E8E31 /* UIImageView+AFNetworking.m */; };
 		0E2F51EC18552360000E8E31 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51EB18552360000E8E31 /* SimplePing.m */; };
+		0E862E0F185DE6B300E60EF0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E862E0E185DE6B300E60EF0 /* Settings.bundle */; };
 		0E8781EF1857872A0017301D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8781EE1857872A0017301D /* SystemConfiguration.framework */; };
 		0E8781F1185787BB0017301D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8781F0185787BB0017301D /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		0E2F51E01855209F000E8E31 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		0E2F51EA18552360000E8E31 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		0E2F51EB18552360000E8E31 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		0E862E0E185DE6B300E60EF0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0E8781EE1857872A0017301D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E8781F0185787BB0017301D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 		0E12245F18551DB5006FAD09 = {
 			isa = PBXGroup;
 			children = (
+				0E862E0E185DE6B300E60EF0 /* Settings.bundle */,
 				0E2F51CD1855209F000E8E31 /* AFNetworking */,
 				0E12247118551DB5006FAD09 /* NetChequer */,
 				0E12249318551DB5006FAD09 /* NetChequerTests */,
@@ -310,6 +313,7 @@
 				0E12248718551DB5006FAD09 /* Images.xcassets in Resources */,
 				0E12247F18551DB5006FAD09 /* Main_iPhone.storyboard in Resources */,
 				0E12247618551DB5006FAD09 /* InfoPlist.strings in Resources */,
+				0E862E0F185DE6B300E60EF0 /* Settings.bundle in Resources */,
 				0E1224A418551E22006FAD09 /* red_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

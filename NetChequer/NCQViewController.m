@@ -15,8 +15,6 @@
 #import "SimplePing.h"
 #include <netdb.h> 
 
-static NSString * DisplayAddressForAddress(NSData * address);
-
 @interface NCQViewController () <NSNetServiceBrowserDelegate, NSNetServiceDelegate, SimplePingDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *correctLanImage;
 @property (weak, nonatomic) IBOutlet UIImageView *seeAmburHubImage;
@@ -26,6 +24,7 @@ static NSString * DisplayAddressForAddress(NSData * address);
 @property (weak, nonatomic) IBOutlet UILabel *seeInternetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *canSeeModemLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *canSeeModemImage;
+@property (weak, nonatomic) IBOutlet UILabel *comcastSwitchLabel;
 
 @property (strong, nonatomic) AFHTTPClient *internetClient;
 
@@ -36,15 +35,23 @@ static NSString * DisplayAddressForAddress(NSData * address);
 @property (strong, nonatomic) NSNetServiceBrowser *browser;
 @property (strong, nonatomic) NSNetService *foundService;
 
+@property (strong, nonatomic) NSString *comcastModemIP;
+@property (strong, nonatomic) NSString *networkPrefix;
+@property (strong, nonatomic) NSString *paymentDescription;
+@property (strong, nonatomic) NSString *paymentTestUrl;
+
+
+@property (nonatomic) BOOL testAMBUR;
+
 @end
 
-NSString * const PaymentHostName = @"MercuryPay.com";
+NSString * const PaymentHostName = @"Payment processor";
 NSString * const PaymentHostURL = @"http://www.mercurypay.com/";
 NSString * const LocalLANPrefix = @"Pallookaville";
 NSString * const AmburHostName = @"Pallookaville Fine Foods";
 
-NSString * const ComcastModemIP = @"24.30.102.58";
-//NSString * const ComcastModemIP = @"10.1.10.1";
+NSString * const ComcastModemIPExternal = @"24.30.102.58";
+NSString * const ComcastModemIPInternal = @"10.1.10.1";
 
 // cuz i'm lazy
 #define YELLOW [UIImage imageNamed:@"yellow"]
@@ -56,27 +63,95 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	self.comcastModemIP = ComcastModemIPInternal;
 
-	self.internetClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:PaymentHostURL]];
-	__block __weak typeof (self) weakSelf = self;
-	[self.internetClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-		typeof(self) strongSelf = weakSelf;
-		[strongSelf checkStatuses:nil];
-	}];
 	NSNetServiceBrowser *browser = [[NSNetServiceBrowser alloc] init];
 	[browser setDelegate:self];
 	self.browser = browser;
 
 }
 
+
+- (void) notifySettingsChanged:(NSNotification *)note {
+	NSUserDefaults *dfl = [NSUserDefaults standardUserDefaults];
+	self.paymentTestUrl = [dfl stringForKey:@"paymentTestUrl"];
+	if(!self.paymentTestUrl)
+		self.paymentTestUrl = PaymentHostURL;
+
+	self.networkPrefix = [dfl stringForKey:@"networkPrefix"];
+	if(!self.networkPrefix)
+		self.networkPrefix = LocalLANPrefix;
+
+	self.testAMBUR = [dfl boolForKey:@"testForAMBUR"];
+
+	self.paymentDescription = [dfl stringForKey:@"paymentDescription"];
+	[self checkStatuses:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+
+	[self notifySettingsChanged:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifySettingsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+
+	NSLog(@"%@", self.paymentDescription);
+	if(!self.paymentDescription)
+		self.paymentDescription = PaymentHostName;
+
+	self.internetClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.paymentTestUrl]];
+	__block __weak typeof (self) weakSelf = self;
+	[self.internetClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+		typeof(self) strongSelf = weakSelf;
+		[strongSelf checkStatuses:nil];
+	}];
+
 	[self checkStatuses:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
+	[self cleanup];
 }
 
 // Pad rotates. Nothing else.
 - (BOOL)shouldAutorotate {
 	return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+}
+
+#pragma mark - Actions.
+
+- (IBAction) networkHintTapped:(id)sender {
+	//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Hint" message:@"Go to Settings and join 'Pallookaville POS' or 'Pallookaville POS 2' wireless networks." delegate:nil cancelButtonTitle:@"OK Geez" otherButtonTitles:nil];
+	//	[alert show];
+}
+
+- (IBAction) amburHintTapped:(id)sender {
+
+}
+
+- (IBAction) internetHintTapped:(id)sender {
+
+}
+
+- (IBAction) comcastHintTapped:(id)sender {
+	
+}
+
+- (IBAction) switchChanged:(id)sender {
+	UISwitch *sw = sender;
+
+	if(sw.on) {
+		self.comcastSwitchLabel.text = @"External";
+		self.comcastModemIP = ComcastModemIPExternal;
+		[self pingTimerStop];
+		[self checkModemPing];
+	} else {
+		self.comcastSwitchLabel.text = @"Internal";
+		self.comcastModemIP = ComcastModemIPInternal;
+		[self pingTimerStop];
+		[self checkModemPing];
+	}
 }
 
 // ---------------------------------------------------------- TESTS
@@ -87,6 +162,16 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 	[self checkWan];
 	[self checkModemPing];
 }
+
+- (void) cleanup {
+	if(self.browser)
+		[self.browser stop];
+
+	if(self.pingTimer) {
+		[self pingTimerStop];
+	}
+}
+
 
 #pragma mark - Checks the network name for the expected value.
 - (void) checkCorrectLan {
@@ -122,15 +207,15 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 #pragma mark - Check connectivity to the payment processor.
 
 - (void)checkWan {
-	self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ available?", PaymentHostName];
+	self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ available?", self.paymentDescription];
 	self.seeInternetImage.image = YELLOW;
 
-	[self.internetClient getPath:@"/" parameters:Nil success:^(AFHTTPRequestOperation *op, id response) {
-		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is online!", PaymentHostName];
+	[self.internetClient getPath:@"" parameters:Nil success:^(AFHTTPRequestOperation *op, id response) {
+		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is online!", self.paymentDescription];
 		self.seeInternetLabel.textColor = [UIColor blackColor];
 		self.seeInternetImage.image = GREEN;
 	} failure:^(AFHTTPRequestOperation *op, NSError *err){
-		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is OFFLINE!", PaymentHostName];
+		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is OFFLINE!", self.paymentDescription];
 		self.seeInternetLabel.textColor = [UIColor redColor];
 		self.seeInternetImage.image = RED;
 	}];
@@ -140,14 +225,20 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 
 - (void) checkForAmbur {
 	[self.browser stop];
+
+	if(!self.testAMBUR) {
+		self.seeAmburHubImage.image = YELLOW;
+		self.seeAmburHubLabel.text = @"AMBUR hub detection is disabled in Settings.";
+		self.seeAmburHubLabel.textColor = [UIColor blackColor];
+		return;
+	}
+
 	self.seeAmburHubLabel.text = @"I do not see the AMBUR host.";
 	self.seeAmburHubLabel.textColor = [UIColor redColor];
 	self.seeAmburHubImage.image = RED;
 	[self.browser searchForServicesOfType:@"_restaurant._tcp." inDomain:@""];
 
 }
-
-#pragma mark - Bonjour delegate methods
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
 	if([aNetService.name isEqualToString:AmburHostName]) {
@@ -191,31 +282,14 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 	self.foundService = nil;
 }
 
-#pragma mark - Actions.
 
-- (IBAction) networkHintTapped:(id)sender {
-	//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Hint" message:@"Go to Settings and join 'Pallookaville POS' or 'Pallookaville POS 2' wireless networks." delegate:nil cancelButtonTitle:@"OK Geez" otherButtonTitles:nil];
-	//	[alert show];
-}
-
-- (IBAction) amburHintTapped:(id)sender {
-
-}
-
-- (IBAction) internetHintTapped:(id)sender {
-
-}
-
-- (IBAction) comcastHintTapped:(id)sender {
-
-}
 
 #pragma mark - ICMP ping
 
 - (void) checkModemPing {
 	self.canSeeModemImage.image = YELLOW;
 	self.canSeeModemLabel.text = @"Can we ping the Comcast modem?";
-	[self startPingingAddress:ComcastModemIP];
+	[self startPingingAddress:self.comcastModemIP];
 }
 
 - (void) startPingingAddress:(NSString*)addressStr {
@@ -225,18 +299,21 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 
 		NSData *addr = [NSData dataWithBytes:&address length:sizeof(struct sockaddr_in)];
 		
+		self.pingTimerCounter = 0;
+
 		self.ping = [SimplePing simplePingWithHostAddress:addr];
 		self.ping.delegate = self;
 		[self.ping start];
 
 		NSTimer *t = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pingTimerFired:) userInfo:nil repeats:YES];
 		self.pingTimer = t;
+		[t fire];
 	}
 }
 
 - (void) comcastFailed {
 	self.canSeeModemImage.image = RED;
-	self.canSeeModemLabel.text = [NSString stringWithFormat:@"Cannot see the Comcast modem at %@", ComcastModemIP];
+	self.canSeeModemLabel.text = [NSString stringWithFormat:@"Cannot see the Comcast modem at %@", self.comcastModemIP];
 	self.canSeeModemLabel.textColor = [UIColor redColor];
 }
 
@@ -254,12 +331,11 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 		[self pingTimerStop];
 		return;
 	}
-
 	self.canSeeModemLabel.text = [NSString stringWithFormat:@"Can we ping the Comcast modem? (try #%d)", _pingTimerCounter];
-
 	[self.ping sendPingWithData:nil];
 }
 
+#pragma mark - SimplePing delegate methods
 
 - (void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet error:(NSError *)error {
 	NSLog(@"Fail %@", error);
@@ -275,7 +351,8 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 
 - (void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet {
 	self.canSeeModemImage.image = GREEN;
-	self.canSeeModemLabel.text = [NSString stringWithFormat:@"I can ping the Comcast modem at %@.", ComcastModemIP];
+	self.canSeeModemLabel.text = [NSString stringWithFormat:@"I can ping the Comcast modem at %@.", self.comcastModemIP];
+	self.canSeeModemLabel.textColor = [UIColor blackColor];
 	[self pingTimerStop];
 }
 
@@ -285,10 +362,14 @@ NSString * const ComcastModemIP = @"24.30.102.58";
 }
 
 - (void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet {
+	// NSLog(@"Send");
 }
 
 - (void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address {
+	// NSLog(@"Start");
 }
+
+#pragma mark - Utilities
 
 - (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address
 {
