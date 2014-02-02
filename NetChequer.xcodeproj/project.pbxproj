@@ -23,6 +23,7 @@
 		0E12249818551DB5006FAD09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E12249618551DB5006FAD09 /* InfoPlist.strings */; };
 		0E12249A18551DB5006FAD09 /* NetChequerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E12249918551DB5006FAD09 /* NetChequerTests.m */; };
 		0E1224A418551E22006FAD09 /* red_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E1224A318551E22006FAD09 /* red_button.png */; };
+		0E1DD6581863B731002C90A7 /* NCQPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1DD6571863B731002C90A7 /* NCQPrinterViewController.m */; };
 		0E2F51E11855209F000E8E31 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51CF1855209F000E8E31 /* AFHTTPClient.m */; };
 		0E2F51E21855209F000E8E31 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51D11855209F000E8E31 /* AFHTTPRequestOperation.m */; };
 		0E2F51E31855209F000E8E31 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2F51D31855209F000E8E31 /* AFImageRequestOperation.m */; };
@@ -36,6 +37,10 @@
 		0E862E0F185DE6B300E60EF0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E862E0E185DE6B300E60EF0 /* Settings.bundle */; };
 		0E8781EF1857872A0017301D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8781EE1857872A0017301D /* SystemConfiguration.framework */; };
 		0E8781F1185787BB0017301D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8781F0185787BB0017301D /* MobileCoreServices.framework */; };
+		0EC9F2A8186475EC00E4DAA7 /* PrinterFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9F2A7186475EC00E4DAA7 /* PrinterFunctions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0EC9F2AC1864764B00E4DAA7 /* RasterDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9F2AB1864764B00E4DAA7 /* RasterDocument.m */; };
+		0EC9F2AF1864765D00E4DAA7 /* StarBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9F2AE1864765D00E4DAA7 /* StarBitmap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0ECCE52F18639FC400AE1C20 /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECCE52E18639FC400AE1C20 /* StarIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,8 @@
 		0E12249718551DB5006FAD09 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E12249918551DB5006FAD09 /* NetChequerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetChequerTests.m; sourceTree = "<group>"; };
 		0E1224A318551E22006FAD09 /* red_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_button.png; sourceTree = "<group>"; };
+		0E1DD6561863B731002C90A7 /* NCQPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCQPrinterViewController.h; sourceTree = "<group>"; };
+		0E1DD6571863B731002C90A7 /* NCQPrinterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCQPrinterViewController.m; sourceTree = "<group>"; };
 		0E2F51CE1855209F000E8E31 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		0E2F51CF1855209F000E8E31 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		0E2F51D01855209F000E8E31 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -94,6 +101,14 @@
 		0E862E0E185DE6B300E60EF0 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0E8781EE1857872A0017301D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0E8781F0185787BB0017301D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0EC9F2A6186475EC00E4DAA7 /* PrinterFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterFunctions.h; sourceTree = "<group>"; };
+		0EC9F2A7186475EC00E4DAA7 /* PrinterFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrinterFunctions.m; sourceTree = "<group>"; };
+		0EC9F2A91864760800E4DAA7 /* CommonEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonEnum.h; sourceTree = "<group>"; };
+		0EC9F2AA1864764B00E4DAA7 /* RasterDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RasterDocument.h; sourceTree = "<group>"; };
+		0EC9F2AB1864764B00E4DAA7 /* RasterDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RasterDocument.m; sourceTree = "<group>"; };
+		0EC9F2AD1864765D00E4DAA7 /* StarBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarBitmap.h; sourceTree = "<group>"; };
+		0EC9F2AE1864765D00E4DAA7 /* StarBitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarBitmap.m; sourceTree = "<group>"; };
+		0ECCE52E18639FC400AE1C20 /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StarIO.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +120,7 @@
 				0E8781EF1857872A0017301D /* SystemConfiguration.framework in Frameworks */,
 				0E12246E18551DB5006FAD09 /* CoreGraphics.framework in Frameworks */,
 				0E12247018551DB5006FAD09 /* UIKit.framework in Frameworks */,
+				0ECCE52F18639FC400AE1C20 /* StarIO.framework in Frameworks */,
 				0E12246C18551DB5006FAD09 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +162,7 @@
 		0E12246A18551DB5006FAD09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0ECCE52E18639FC400AE1C20 /* StarIO.framework */,
 				0E8781F0185787BB0017301D /* MobileCoreServices.framework */,
 				0E8781EE1857872A0017301D /* SystemConfiguration.framework */,
 				0E12246B18551DB5006FAD09 /* Foundation.framework */,
@@ -159,6 +176,7 @@
 		0E12247118551DB5006FAD09 /* NetChequer */ = {
 			isa = PBXGroup;
 			children = (
+				0EC9F2A51864747F00E4DAA7 /* StarIO Sample */,
 				0E1224A318551E22006FAD09 /* red_button.png */,
 				0E12247A18551DB5006FAD09 /* NCQAppDelegate.h */,
 				0E12247B18551DB5006FAD09 /* NCQAppDelegate.m */,
@@ -166,6 +184,8 @@
 				0E12248018551DB5006FAD09 /* Main_iPad.storyboard */,
 				0E12248318551DB5006FAD09 /* NCQViewController.h */,
 				0E12248418551DB5006FAD09 /* NCQViewController.m */,
+				0E1DD6561863B731002C90A7 /* NCQPrinterViewController.h */,
+				0E1DD6571863B731002C90A7 /* NCQPrinterViewController.m */,
 				0E2F51EA18552360000E8E31 /* SimplePing.h */,
 				0E2F51EB18552360000E8E31 /* SimplePing.m */,
 				0E12248618551DB5006FAD09 /* Images.xcassets */,
@@ -227,6 +247,20 @@
 				0E2F51E01855209F000E8E31 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		0EC9F2A51864747F00E4DAA7 /* StarIO Sample */ = {
+			isa = PBXGroup;
+			children = (
+				0EC9F2AA1864764B00E4DAA7 /* RasterDocument.h */,
+				0EC9F2AB1864764B00E4DAA7 /* RasterDocument.m */,
+				0EC9F2A91864760800E4DAA7 /* CommonEnum.h */,
+				0EC9F2A6186475EC00E4DAA7 /* PrinterFunctions.h */,
+				0EC9F2A7186475EC00E4DAA7 /* PrinterFunctions.m */,
+				0EC9F2AD1864765D00E4DAA7 /* StarBitmap.h */,
+				0EC9F2AE1864765D00E4DAA7 /* StarBitmap.m */,
+			);
+			name = "StarIO Sample";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,14 +368,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E2F51E31855209F000E8E31 /* AFImageRequestOperation.m in Sources */,
+				0EC9F2AF1864765D00E4DAA7 /* StarBitmap.m in Sources */,
 				0E12247818551DB5006FAD09 /* main.m in Sources */,
 				0E2F51E61855209F000E8E31 /* AFPropertyListRequestOperation.m in Sources */,
 				0E12248518551DB5006FAD09 /* NCQViewController.m in Sources */,
+				0EC9F2A8186475EC00E4DAA7 /* PrinterFunctions.m in Sources */,
+				0E1DD6581863B731002C90A7 /* NCQPrinterViewController.m in Sources */,
 				0E2F51E71855209F000E8E31 /* AFURLConnectionOperation.m in Sources */,
 				0E2F51E81855209F000E8E31 /* AFXMLRequestOperation.m in Sources */,
 				0E2F51E41855209F000E8E31 /* AFJSONRequestOperation.m in Sources */,
 				0E2F51E91855209F000E8E31 /* UIImageView+AFNetworking.m in Sources */,
 				0E2F51E51855209F000E8E31 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				0EC9F2AC1864764B00E4DAA7 /* RasterDocument.m in Sources */,
 				0E2F51E21855209F000E8E31 /* AFHTTPRequestOperation.m in Sources */,
 				0E2F51EC18552360000E8E31 /* SimplePing.m in Sources */,
 				0E12247C18551DB5006FAD09 /* NCQAppDelegate.m in Sources */,
@@ -484,6 +522,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/barbecuesteve/Code/SOG/NetChequer,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NetChequer/NetChequer-Prefix.pch";
 				INFOPLIST_FILE = "NetChequer/NetChequer-Info.plist";
@@ -501,6 +543,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/barbecuesteve/Code/SOG/NetChequer,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NetChequer/NetChequer-Prefix.pch";
 				INFOPLIST_FILE = "NetChequer/NetChequer-Info.plist";

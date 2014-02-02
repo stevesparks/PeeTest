@@ -7,12 +7,14 @@
 //
 
 #import "NCQAppDelegate.h"
+#import "NCQPrinterViewController.h"
 
 @implementation NCQAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	[NCQPrinterViewController refreshPrinters];
 	[self loadPreferences];
     return YES;
 }

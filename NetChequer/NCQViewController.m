@@ -14,6 +14,7 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "SimplePing.h"
 #include <netdb.h> 
+#import "NCQPrinterViewController.h"
 
 @interface NCQViewController () <NSNetServiceBrowserDelegate, NSNetServiceDelegate, SimplePingDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *correctLanImage;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSString *paymentTestUrl;
 
 
+@property (strong, nonatomic) UIGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic) BOOL testAMBUR;
 
 @end
@@ -69,8 +71,18 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 	[browser setDelegate:self];
 	self.browser = browser;
 
+	self.title = @"WHAT THE F...";
+
+	UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(showPrinters)];
+	swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+	[self.view addGestureRecognizer:swipe];
+	self.swipeGestureRecognizer = swipe;
 }
 
+
+- (void) showPrinters {
+	[self performSegueWithIdentifier:@"showPrinter" sender:self];
+}
 
 - (void) notifySettingsChanged:(NSNotification *)note {
 	NSUserDefaults *dfl = [NSUserDefaults standardUserDefaults];
@@ -271,9 +283,9 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 - (void)netServiceDidResolveAddress:(NSNetService *)service {
 	struct sockaddr_in *socketAddress = (struct sockaddr_in *) [[service.addresses firstObject] bytes];
 	NSString *ipString = [NSString stringWithFormat: @"%s", inet_ntoa(socketAddress->sin_addr)];
-	int16_t port = socketAddress->sin_port;
+	uint16_t port = socketAddress->sin_port;
 
-	self.seeAmburHubLabel.text = [NSString stringWithFormat:@"Ambur hub \"%@\" found at %@:%d.", service.name, ipString, port];
+	self.seeAmburHubLabel.text = [NSString stringWithFormat:@"Ambur hub \"%@\" found at %@ : %u .", service.name, ipString, port];
 }
 
 - (void)netService:(NSNetService *)service didNotResolve:(NSDictionary *)errorDict {

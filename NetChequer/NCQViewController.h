@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class NCQPrinterViewController;
 @interface NCQViewController : UIViewController
+@property (weak, nonatomic) IBOutlet NCQPrinterViewController *printerVC;
 
 @end
