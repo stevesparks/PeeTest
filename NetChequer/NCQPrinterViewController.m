@@ -111,7 +111,7 @@ NSString * const PrinterIdentityKitchen = @"Kitchen";
 - (void)viewDidAppear:(BOOL)animated {
 	[self.activityIndicator startAnimating];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadPrinters) name:PrinterListUpdatedNotification object:nil];
-	[self loadPrinters];
+	[NCQPrinterViewController refreshPrinters];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -168,7 +168,7 @@ NSString * const PrinterIdentityKitchen = @"Kitchen";
 	self.kitchenPrinterTestButton.hidden = YES;
 
 
-	NSArray *searchResults = self.printerList;
+	NSArray *searchResults = internalPrinterList;
 
 	[self.activityIndicator stopAnimating];
 	self.recheckButton.hidden = NO;
