@@ -77,6 +77,8 @@ NSString * const PrinterIdentityKitchen = @"Kitchen";
 {
     [super viewDidLoad];
 
+	self.navigationItem.title = @"PRINTERS";
+
 	self.macLookup = @{
 					   @"00:11:62:07:24:6e": PrinterIdentityHub,
 					   @"00:11:62:07:24:3f": PrinterIdentityBar,

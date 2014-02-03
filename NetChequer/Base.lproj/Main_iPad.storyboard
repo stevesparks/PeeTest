@@ -183,6 +183,192 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2201" y="-8"/>
+        </scene>
+        <!--Printer View Controller-->
+        <scene sceneID="DvK-L1-aB7">
+            <objects>
+                <viewController id="wc6-fX-F6T" customClass="NCQPrinterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CVk-82-9vM"/>
+                        <viewControllerLayoutGuide type="bottom" id="MQl-ta-veO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ijm-8S-joN">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hub Printer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="8jm-cI-SLg">
+                                <rect key="frame" x="20" y="82" width="135" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggT-KY-V49">
+                                <rect key="frame" x="684" y="82" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="9BC-ok-7fj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="Alh-9k-VEE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="BRb-Ob-xiE"/>
+                                    <constraint firstAttribute="width" constant="64" id="YaJ-Qm-eNZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bar Printer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="IFF-oi-6fZ">
+                                <rect key="frame" x="20" y="154" width="135" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mzo-Vq-9LP">
+                                <rect key="frame" x="684" y="154" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="J2m-98-gXd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="P10-k6-beu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="nhQ-Db-qlY"/>
+                                    <constraint firstAttribute="height" constant="64" id="ojr-bo-Vp8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kitchen Printer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="135" translatesAutoresizingMaskIntoConstraints="NO" id="vcj-Oq-Eca">
+                                <rect key="frame" x="20" y="226" width="135" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-IP-dsP">
+                                <rect key="frame" x="684" y="226" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="I52-AN-57s"/>
+                                    <constraint firstAttribute="height" constant="64" id="LaU-tV-jnd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="OMh-lg-Lu0"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="sC8-Xr-mGh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGF-OZ-Upp">
+                                <rect key="frame" x="690" y="88" width="53" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="GNm-zw-bZI"/>
+                                    <constraint firstAttribute="width" constant="53" id="cZM-Mh-Qju"/>
+                                </constraints>
+                                <state key="normal" title="TEST">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testHubPrinter:" destination="wc6-fX-F6T" eventType="touchUpInside" id="4sw-QE-q11"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swN-Gw-iLe">
+                                <rect key="frame" x="690" y="159" width="53" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="LTe-BM-qbm"/>
+                                    <constraint firstAttribute="width" constant="53" id="y4y-lY-Siq"/>
+                                </constraints>
+                                <state key="normal" title="TEST">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testBarPrinter:" destination="wc6-fX-F6T" eventType="touchUpInside" id="yke-GU-NUR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLz-I0-9Xn">
+                                <rect key="frame" x="690" y="231" width="53" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="9o7-xD-zes"/>
+                                    <constraint firstAttribute="height" constant="53" id="Dnz-TZ-fpY"/>
+                                </constraints>
+                                <state key="normal" title="TEST">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testKitchenPrinter:" destination="wc6-fX-F6T" eventType="touchUpInside" id="DRu-jp-9QV"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehs-Fh-7Yv">
+                                <rect key="frame" x="20" y="974" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80034375189999996" green="0.833594799" blue="0.9994465709" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="GI6-zm-E53"/>
+                                    <constraint firstAttribute="height" constant="30" id="JsQ-in-mpa"/>
+                                </constraints>
+                                <state key="normal" title="RE-CHECK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="wc6-fX-F6T" eventType="touchUpInside" id="GwJ-Q8-Nn0"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VMt-da-9Wa">
+                                <rect key="frame" x="698" y="95" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ehs-Fh-7Yv" firstAttribute="leading" secondItem="ijm-8S-joN" secondAttribute="leading" constant="20" id="2K9-cj-D8u"/>
+                            <constraint firstAttribute="trailing" secondItem="swN-Gw-iLe" secondAttribute="trailing" constant="25" id="6gp-9e-N1K"/>
+                            <constraint firstItem="uLz-I0-9Xn" firstAttribute="top" secondItem="Mzo-Vq-9LP" secondAttribute="bottom" constant="13" id="905-JF-igo"/>
+                            <constraint firstAttribute="trailing" secondItem="uLz-I0-9Xn" secondAttribute="trailing" constant="25" id="DEU-2T-21y"/>
+                            <constraint firstAttribute="trailing" secondItem="VMt-da-9Wa" secondAttribute="trailing" constant="33" id="E05-E1-0Za"/>
+                            <constraint firstAttribute="trailing" secondItem="nGF-OZ-Upp" secondAttribute="trailing" constant="25" id="I7W-TI-YUY"/>
+                            <constraint firstItem="nGF-OZ-Upp" firstAttribute="top" secondItem="CVk-82-9vM" secondAttribute="bottom" constant="24" id="ITu-8K-M6L"/>
+                            <constraint firstItem="Mzo-Vq-9LP" firstAttribute="top" secondItem="ggT-KY-V49" secondAttribute="bottom" constant="8" id="VoR-ah-w7f"/>
+                            <constraint firstItem="VMt-da-9Wa" firstAttribute="top" secondItem="CVk-82-9vM" secondAttribute="bottom" constant="31" id="c7d-G9-rUc"/>
+                            <constraint firstAttribute="trailing" secondItem="ggT-KY-V49" secondAttribute="trailing" constant="20" id="chI-UN-rE3"/>
+                            <constraint firstItem="MQl-ta-veO" firstAttribute="top" secondItem="ehs-Fh-7Yv" secondAttribute="bottom" constant="20" id="hNA-l2-JC7"/>
+                            <constraint firstItem="ggT-KY-V49" firstAttribute="top" secondItem="CVk-82-9vM" secondAttribute="bottom" constant="18" id="moh-2z-6zM"/>
+                            <constraint firstAttribute="trailing" secondItem="Mzo-Vq-9LP" secondAttribute="trailing" constant="20" id="njY-U7-A7L"/>
+                            <constraint firstAttribute="trailing" secondItem="E6n-IP-dsP" secondAttribute="trailing" constant="20" id="ocI-uw-b5j"/>
+                            <constraint firstItem="E6n-IP-dsP" firstAttribute="top" secondItem="Mzo-Vq-9LP" secondAttribute="bottom" constant="8" id="sZR-Aa-tWD"/>
+                            <constraint firstItem="swN-Gw-iLe" firstAttribute="top" secondItem="ggT-KY-V49" secondAttribute="bottom" constant="13" id="z4W-ec-8SG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2uV-cC-Sps"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="VMt-da-9Wa" id="ldK-Xo-Ww8"/>
+                        <outlet property="barLabel" destination="IFF-oi-6fZ" id="t45-iS-Bu0"/>
+                        <outlet property="barPrinterImageView" destination="Mzo-Vq-9LP" id="mwg-A4-BHA"/>
+                        <outlet property="barPrinterTestButton" destination="swN-Gw-iLe" id="pK1-tN-QHd"/>
+                        <outlet property="hubLabel" destination="8jm-cI-SLg" id="G2h-H8-V08"/>
+                        <outlet property="hubPrinterImageView" destination="ggT-KY-V49" id="EN2-TU-QC4"/>
+                        <outlet property="hubPrinterTestButton" destination="nGF-OZ-Upp" id="2Zk-7s-wbL"/>
+                        <outlet property="kitchenLabel" destination="vcj-Oq-Eca" id="lPO-oc-JjO"/>
+                        <outlet property="kitchenPrinterImageView" destination="E6n-IP-dsP" id="XVq-pf-h0J"/>
+                        <outlet property="kitchenPrinterTestButton" destination="uLz-I0-9Xn" id="wZ3-zj-sym"/>
+                        <outlet property="recheckButton" destination="ehs-Fh-7Yv" id="85R-GV-HYg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Tj-js-qXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1283" y="-8"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lIc-G3-TsV">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="O7o-U8-19T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yJG-Kb-RbM">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MU8-2V-TFC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6h-MR-ihw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3088" y="-8"/>
         </scene>
     </scenes>
     <resources>
