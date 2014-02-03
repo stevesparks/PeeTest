@@ -16,7 +16,7 @@
 #include <netdb.h> 
 #import "NCQPrinterViewController.h"
 
-@interface NCQViewController () <NSNetServiceBrowserDelegate, NSNetServiceDelegate, SimplePingDelegate>
+@interface NCQViewController () <NSNetServiceBrowserDelegate, NSNetServiceDelegate, SimplePingDelegate , UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *correctLanImage;
 @property (weak, nonatomic) IBOutlet UIImageView *seeAmburHubImage;
 @property (weak, nonatomic) IBOutlet UIImageView *seeInternetImage;
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *canSeeModemLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *canSeeModemImage;
 @property (weak, nonatomic) IBOutlet UILabel *comcastSwitchLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *comcastSwitch;
 
 @property (strong, nonatomic) AFHTTPClient *internetClient;
 
@@ -45,6 +46,14 @@
 @property (strong, nonatomic) UIGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic) BOOL testAMBUR;
 
+
+@property BOOL onPallookavilleLan;
+@property BOOL canSeeAmbur;
+@property BOOL canSeeComcastRouterInternal;
+@property BOOL canSeeComcastRouterExternal;
+@property BOOL canSeePaymentProcessor;
+
+@property BOOL checkingInternal;
 @end
 
 NSString * const PaymentHostName = @"Payment processor";
@@ -77,6 +86,9 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 	swipe.direction = UISwipeGestureRecognizerDirectionLeft;
 	[self.view addGestureRecognizer:swipe];
 	self.swipeGestureRecognizer = swipe;
+
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showActionHint:)];
+	[self.view addGestureRecognizer:tap];
 }
 
 
@@ -151,19 +163,7 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 }
 
 - (IBAction) switchChanged:(id)sender {
-	UISwitch *sw = sender;
-
-	if(sw.on) {
-		self.comcastSwitchLabel.text = @"External";
-		self.comcastModemIP = ComcastModemIPExternal;
-		[self pingTimerStop];
-		[self checkModemPing];
-	} else {
-		self.comcastSwitchLabel.text = @"Internal";
-		self.comcastModemIP = ComcastModemIPInternal;
-		[self pingTimerStop];
-		[self checkModemPing];
-	}
+	[self checkModemPing];
 }
 
 // ---------------------------------------------------------- TESTS
@@ -190,6 +190,7 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 	self.correctLanLabel.text = @"Cannot detect LAN name.";
 	self.correctLanLabel.textColor = [UIColor redColor];
 	self.correctLanImage.image = RED;
+	self.onPallookavilleLan = NO;
 
 	NSArray *interfaces = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
 	NSString *searchString = LocalLANPrefix;
@@ -208,6 +209,7 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 				self.correctLanLabel.text = [NSString stringWithFormat:@"We're on the right LAN."];
 				self.correctLanLabel.textColor = [UIColor blackColor];
 				onLocalLan = YES;
+				self.onPallookavilleLan = YES;
 			}
 		}
 		if(!onLocalLan && trimmed) {
@@ -221,11 +223,13 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 - (void)checkWan {
 	self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ available?", self.paymentDescription];
 	self.seeInternetImage.image = YELLOW;
+	self.canSeePaymentProcessor = NO;
 
 	[self.internetClient getPath:@"" parameters:Nil success:^(AFHTTPRequestOperation *op, id response) {
 		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is online!", self.paymentDescription];
 		self.seeInternetLabel.textColor = [UIColor blackColor];
 		self.seeInternetImage.image = GREEN;
+		self.canSeePaymentProcessor = YES;
 	} failure:^(AFHTTPRequestOperation *op, NSError *err){
 		self.seeInternetLabel.text = [NSString stringWithFormat:@"%@ is OFFLINE!", self.paymentDescription];
 		self.seeInternetLabel.textColor = [UIColor redColor];
@@ -237,6 +241,7 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 
 - (void) checkForAmbur {
 	[self.browser stop];
+	self.canSeeAmbur = NO;
 
 	if(!self.testAMBUR) {
 		self.seeAmburHubImage.image = YELLOW;
@@ -257,6 +262,7 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 		self.seeAmburHubLabel.text = [NSString stringWithFormat:@"Ambur host \"%@\" found.", aNetService.name];
 		self.seeAmburHubLabel.textColor = [UIColor blackColor];
 		self.seeAmburHubImage.image = GREEN;
+		self.canSeeAmbur = YES;
 		aNetService.delegate = self;
 		self.foundService = aNetService;
 		[aNetService resolveWithTimeout:10.0];
@@ -301,6 +307,22 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 - (void) checkModemPing {
 	self.canSeeModemImage.image = YELLOW;
 	self.canSeeModemLabel.text = @"Can we ping the Comcast modem?";
+
+	UISwitch *sw = self.comcastSwitch;
+	if(sw.on) {
+		self.canSeeComcastRouterExternal = NO;
+		self.checkingInternal = NO;
+		self.comcastSwitchLabel.text = @"External";
+		self.comcastModemIP = ComcastModemIPExternal;
+		[self pingTimerStop];
+	} else {
+		self.canSeeComcastRouterInternal = NO;
+		self.checkingInternal = YES;
+		self.comcastSwitchLabel.text = @"Internal";
+		self.comcastModemIP = ComcastModemIPInternal;
+		[self pingTimerStop];
+	}
+
 	[self startPingingAddress:self.comcastModemIP];
 }
 
@@ -365,6 +387,13 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
 	self.canSeeModemImage.image = GREEN;
 	self.canSeeModemLabel.text = [NSString stringWithFormat:@"I can ping the Comcast modem at %@.", self.comcastModemIP];
 	self.canSeeModemLabel.textColor = [UIColor blackColor];
+
+	if(self.comcastSwitch.on) {
+		self.canSeeComcastRouterExternal = YES;
+	} else {
+		self.canSeeComcastRouterInternal = YES;
+	}
+
 	[self pingTimerStop];
 }
 
@@ -420,6 +449,40 @@ NSString * const ComcastModemIPInternal = @"10.1.10.1";
     }
 
     return result;
+}
+
+- (NSString *) actionHint {
+	if(!self.onPallookavilleLan) {
+		return @"You are not on the right WiFi network. Please fix that.";
+	}
+	if(!self.canSeeAmbur) {
+		return @"We are on the WiFi, but the AMBUR host isn't. Check the host iPad for network and make sure AMBUR host is running.";
+	}
+	if(self.checkingInternal) {
+		if(!self.canSeeComcastRouterInternal) {
+			return @"We are on the LAN, but the Comcast router is not. Someone unplugging something in the office?";
+		}
+	} else {
+		if(!self.canSeeComcastRouterExternal) {
+			return @"We are on the LAN with the Comcast router, but it cannot talk to the world. Call Comcast.";
+		}
+	}
+	if(!self.canSeePaymentProcessor) {
+		return @"Mercury is down. Switch to using the Square until that red icon turns green.";
+	}
+
+	return @"It looks to me like all is well with the network. Check printers?";
+}
+
+- (IBAction) showActionHint:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Super Action Hint" message:self.actionHint delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Check Printers", nil];
+	[alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if(buttonIndex == 1) {
+		[self showPrinters];
+	}
 }
 
 @end
